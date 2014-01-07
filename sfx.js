@@ -7,6 +7,7 @@ const LIBRARY = __dirname + "/sounds/";
 var sfx = {
 	library: {},
 	config: {},
+	proc: null,
 
 	/**
 	 * Play a sound.
@@ -98,7 +99,16 @@ var sfx = {
 	 */
 	run: function(command) {
 		DEBUG && console.log("Running command: ", command);
-		exec(command);
+		sfx.stop(); // Stop any running processes
+		sfx.proc = exec(command); // Execute the command
+	},
+
+	/**
+	 * Stop the current sound.
+	 * @return {[type]} [description]
+	 */
+	stop: function() {
+		if(sfx.proc) sfx.proc.kill("SIGKILL");
 	},
 
 	/**
