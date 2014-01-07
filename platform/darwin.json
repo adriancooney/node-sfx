@@ -1,0 +1,15 @@
+{
+	"play": {
+		"command": "afplay",
+		"options": {
+			"volume": {
+				"syntax": "-v :volume",
+				"range": [0, 1]
+			},
+
+			"rate": {
+				"syntax": "-r :rate"
+			}
+		}
+	}
+}

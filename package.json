@@ -1,0 +1,16 @@
+{
+  "name": "sfx",
+  "version": "0.1.0",
+  "description": "Sound effects for your node programs",
+  "main": "sfx.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "sound",
+    "effects",
+    "sfx"
+  ],
+  "author": "Adrian Cooney",
+  "license": "MIT"
+}

@@ -1,0 +1,11 @@
+{
+	"play": {
+		"command": "paplay",
+		"options": {
+			"volume": {
+				"syntax": "volume=:volume",
+				"range": [0, 65536]
+			}
+		}
+	}
+}
