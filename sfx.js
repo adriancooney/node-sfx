@@ -43,6 +43,7 @@ var sfx = {
 
 	/**
 	 * Quick helper function to format a string of variables
+	 * @private
 	 * @param  {String} string String with variables in the form of ":varName"
 	 * @param  {Object} values Object containing variable values
 	 * @return {String}        Formatted string
@@ -127,7 +128,7 @@ var sfx = {
 	 * @return {sfx}
 	 */
 	init: function() {
-		// Verify the configuration
+		// Get and verify the configuration
 		try {
 			sfx.config = sfx.verifyConfig(require("./platform/" + process.platform + ".json"));
 		} catch(err) {
