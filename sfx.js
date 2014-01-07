@@ -1,7 +1,7 @@
 var exec = require("child_process").exec,
 	fs = require("fs");
 
-const DEBUG = true;
+const DEBUG = false;
 const LIBRARY = __dirname + "/sounds/";
 
 var sfx = {
