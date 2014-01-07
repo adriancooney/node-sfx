@@ -1,5 +1,5 @@
 # sfx
-### Add some sound to your node programs
+### Add some sound to your node programs.
 Want a notification when your node program has finished executing? Want a beep whenever your program has encountered an error? Ever just wanted your error messages read out? `node-sfx` is for you.
 
 ### Install
@@ -46,8 +46,10 @@ sfx.random(); // Play a random sound
 ### Example uses
 Use `sfx` to read out your logs (but it's probably a bad idea).
 
-	var _log = console.log; 
-	console.log = function() { sfx.say(Array.prototype.join.call(arguments, ". ")); _log.apply(console, arguments); }
+```js
+var _log = console.log; 
+console.log = function() { sfx.say(Array.prototype.join.call(arguments, ". ")); _log.apply(console, arguments); }
+```
 
 Make `sfx` dunk on an error.
 
@@ -78,6 +80,9 @@ app.get("/", function(req, res) {
 ```
 
 Got any cool examples? Submit a pull request and I'd be happy to put it here.
+
+### Contributing
+Have a cool sound to contribute? Make sure it's less than 250kb, stick it in the `sounds/` directory and submit a pull request.
 
 ### TODO
 * Add a little sound package manager hosted on Github so you can selectively retrieve sounds. `sfx add hooray` which adds the `hooray` sound to the global sfx sound directory. Sound files could get large and ain't nobody got time for that.
