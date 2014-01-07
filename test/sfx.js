@@ -66,6 +66,12 @@ describe("sfx", function() {
                 next();
             })
         });
+
+        it("should play a sound with a callback via sfx.[sound]", function(next) {
+            sfx.pop(function() {
+                next();
+            })
+        });
     });
 
     describe("format", function() {
