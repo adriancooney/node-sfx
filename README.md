@@ -66,7 +66,7 @@ Your website's traffic is fading and every request is a good request so it shoul
 Got any cool examples? Submit a pull request and I'd be happy to put it here.
 
 ### TODO
-* Add a little sound package manager hosted on Github. `sfx add hooray` which adds the `hooray` sound to the global sfx sound directory.
+* Add a little sound package manager hosted on Github so you can selectively retrieve sounds. `sfx add hooray` which adds the `hooray` sound to the global sfx sound directory. Sound files could get large and ain't nobody got time for that.
 
 ### Licensing
 MIT
