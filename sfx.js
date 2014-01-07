@@ -22,8 +22,6 @@ var sfx = {
         else if (typeof _rate == "function") callback = _rate, volume = _volume;
         else volume = _volume, rate = _rate, callback = _callback;
 
-        console.log(volume, rate, callback);
-
         var config = sfx.config,
             command = config.play.command;
 
@@ -91,17 +89,21 @@ var sfx = {
      * @param  {String} message Message to say aloud
      * @param  {String} voice   Voice. Accepts "random" and will play with a random voice
      */
-    say: function(message, voice) {
-        if (process.platform !== "darwin") return console.log("`say` is a darwin only feature. Sorry dudes.");
+    say: function(message, _voice, _callback) {
+        var voice, callback;
+        if(typeof _voice == "function") callback = _voice;
+        else voice = _voice, callback = _callback;
+
+        if(process.platform !== "darwin") return console.log("`say` is a darwin only feature. Sorry dudes.");
 
         var voices = "Agnes,Albert,Alex,Bad News,Bahh,Bells,Boing,Bruce,Bubbles,Cellos,Deranged,Fred,Good News,Hysterical,Junior,Kathy,Pipe Organ,Princess,Ralph,Trinoids,Vicki,Victoria,Whisper,Zarvox".split(",").map(function(v) {
             return v.toLowerCase();
         });
 
-        if (voice == "random") voice = voices[Math.floor(Math.random() * voice.length)];
-        else if (voice && voices.indexOf(voice) == -1) throw new Error("Voice does not exist!");
+        if(voice == "random") voice = voices[Math.floor(Math.random() * voice.length)];
+        else if(voice && voices.indexOf(voice) == -1) throw new Error("Voice does not exist!");
 
-        sfx.run("say " + (voice ? "-v " + voice + " " : "") + message);
+        sfx.run("say " + (voice ? "-v " + voice + " " : "") + message, callback);
     },
 
     /**
@@ -115,7 +117,7 @@ var sfx = {
         sfx.proc = exec(command); // Execute the command
 
         // Add the callback
-        if (callback) sfx.proc.on("exit", callback);
+        if(callback) sfx.proc.on("exit", callback);
     },
 
     /**
@@ -123,7 +125,7 @@ var sfx = {
      * @return {[type]} [description]
      */
     stop: function() {
-        if (sfx.proc) sfx.proc.kill("SIGKILL");
+        if(sfx.proc) sfx.proc.kill("SIGKILL");
     },
 
     /**
@@ -180,7 +182,6 @@ var sfx = {
 
         // Random
         sfx.random = sfx.play.bind(sfx, "random");
-
 
         return sfx;
     }
