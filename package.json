@@ -11,6 +11,10 @@
     "effects",
     "sfx"
   ],
+  "repository": { 
+    "type" : "git",
+    "url" : "http://github.com/dunxrion/node-sfx.git"
+  },
   "author": "Adrian Cooney",
   "license": "MIT"
 }
