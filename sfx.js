@@ -94,7 +94,10 @@ var sfx = {
         if(typeof _voice == "function") callback = _voice;
         else voice = _voice, callback = _callback;
 
-        if(process.platform !== "darwin") return console.log("`say` is a darwin only feature. Sorry dudes.");
+        if(process.platform !== "darwin") {
+            if(callback) return callback();
+            else return console.log("`say` is a darwin only feature. Sorry dudes.");
+        }
 
         var voices = "Agnes,Albert,Alex,Bad News,Bahh,Bells,Boing,Bruce,Bubbles,Cellos,Deranged,Fred,Good News,Hysterical,Junior,Kathy,Pipe Organ,Princess,Ralph,Trinoids,Vicki,Victoria,Whisper,Zarvox".split(",").map(function(v) {
             return v.toLowerCase();
