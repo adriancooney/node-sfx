@@ -34,8 +34,8 @@ sfx.say("The arsonist has oddly shaped feet.", "Hysterical");
 sfx.say("The skeleton ran out of shampoo in the shower.", "random");
 ```
 
-#### `sfx.[sound]( [volume, rate] )
-Sounds in the library (without their extension) can also be called directly from the `sfx` for easy access.
+#### `sfx.__sound__( [volume, rate] )
+Sounds in the library (without their extension) can also be called directly from the `sfx` for easy access. `__sound__` is the name of sound within the `sound/` library.
 
 ```js
 sfx.ping();
