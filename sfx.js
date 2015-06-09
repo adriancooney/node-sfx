@@ -1,7 +1,7 @@
 var exec = require("child_process").exec,
     fs = require("fs");
 
-const DEBUG = false;
+const DEBUG = true;
 const LIBRARY = __dirname + "/sounds/";
 
 var sfx = {
@@ -44,7 +44,7 @@ var sfx = {
 
         // Play the sound
         sfx.getSound(sound, function(err, path) {
-            command += " " + path;
+            command += " \"" + path + "\"";
 
             sfx.run(command, callback);
         });
@@ -95,8 +95,8 @@ var sfx = {
         else voice = _voice, callback = _callback;
 
         if(process.platform !== "darwin") {
-            console.log("`say` is a darwin only feature. Sorry, for now.");
-            return callback && callback();
+            if(callback) return callback();
+            else return console.log("`say` is a darwin only feature. Sorry, for now.");
         }
 
         var voices = "Agnes,Albert,Alex,Bad News,Bahh,Bells,Boing,Bruce,Bubbles,Cellos,Deranged,Fred,Good News,Hysterical,Junior,Kathy,Pipe Organ,Princess,Ralph,Trinoids,Vicki,Victoria,Whisper,Zarvox".split(",").map(function(v) {
@@ -116,11 +116,15 @@ var sfx = {
      */
     run: function(command, callback) {
         DEBUG && console.log("Running command: ", command);
+
         sfx.stop(); // Stop any running processes
         sfx.proc = exec(command); // Execute the command
 
         // Add the callback
-        if(callback) sfx.proc.on("exit", callback);
+        if(callback) {
+            sfx.proc.on("exit", callback);
+            sfx.proc.on("error", callback);
+        }
     },
 
     /**
