@@ -1,4 +1,4 @@
-# sfx
+# sfx.js
 ### Add some sound to your node programs.
 Want a notification when your node program has finished executing? Want a beep whenever your program has encountered an error? Ever just wanted your error messages read out? `node-sfx` is for you.
 
