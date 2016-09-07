@@ -1,0 +1,7 @@
+{
+	"play": {
+		"command": "start /min sound.vbs",
+		"options": {
+		}
+	}
+}
