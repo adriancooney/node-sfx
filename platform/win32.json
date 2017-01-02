@@ -1,0 +1,7 @@
+{
+	"play": {
+		"command": "start /min ./node_modules/sfx/sound.vbs",
+		"options": {
+		}
+	}
+}
